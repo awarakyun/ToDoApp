@@ -1,15 +1,17 @@
 import Reflux from 'reflux';
 import actions from '../action/actions'
+import options from '../component/options';
 
 export default class StatusStore extends Reflux.Store {
     constructor() {
         super();
         this.state = {
-            options: [],
+            options: ['ankit','shanu'],
             selected: undefined,
             editSelection: undefined,
             errorMsg: undefined
         };
+        window.statusStore = this.state;
         this.listenables = actions;
 
     }
@@ -25,30 +27,31 @@ export default class StatusStore extends Reflux.Store {
     }
 
     onErrorCheck() {
-        this.setState({
-            errorMsg: 'Insert an element'
+        let newOptions = this.state.options;
+        this.setState( {
+            errorMsg: 'Insert a word',
+            options: newOptions
         });
+      
     }
-onIsValid(option) {
-   if (this.state.options.indexOf(option)>-1)
-          {
-            this.setState({
-                errorMsg: option + 'is alreday in list'
-            }); 
-            return false;
-          }
-          return true;
 
-}
     onAddOption(option) {
         let newOptions = this.state.options;
-        newOptions.push(option);
+        if(newOptions.indexOf(option)>-1)
+        {
+            this.setState({
+                errorMsg: option + ' is alreday in list',
+                options: newOptions
+            });
 
-        console.log('on Add');
+        }
+        else{
+        newOptions.push(option);
         this.setState({
             options: newOptions,
             errorMsg: undefined
         });
+    }
     }
     onEditOption(option, newOption) {
 
@@ -70,7 +73,7 @@ onIsValid(option) {
         }
     }
     onDeleteOption(option) {
-        let newOptions = this.state.options.filter(x => x!=option);
+        let newOptions = this.state.options.filter(x => x != option);
         this.setState({
             options: newOptions
         });

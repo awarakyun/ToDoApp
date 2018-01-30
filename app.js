@@ -6,17 +6,19 @@ import ToDoApp from './js/component/toDoApp.js';
 export default class App extends Component {
     constructor(props){
       super(props);
+      this.store = new StatusStore();
       this.state = {
-        storeProps:new StatusStore().state
+        storeProps:this.store.state
       };
     }
     
     componentDidMount(){
-      this.unsubscribe = new StatusStore().listen(this.onStoreUpdate, this);
+      this.unsubscribe = this.store.listen(this.onStoreUpdate, this);
   
     }
   
     onStoreUpdate(storeProps){  
+      //console.log('test update state', storeProps);
       this.setState({storeProps});
     }
   
