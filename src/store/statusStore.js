@@ -15,6 +15,12 @@ export default class StatusStore extends Reflux.Store {
         this.listenables = actions;
 
     }
+
+    onDeleteAll() {
+        this.setState({
+            options: []
+        });
+    }
     getInitialState() {
         return this.state;
     }
@@ -28,30 +34,29 @@ export default class StatusStore extends Reflux.Store {
 
     onErrorCheck() {
         let newOptions = this.state.options;
-        this.setState( {
+        this.setState({
             errorMsg: 'Insert a word',
             options: newOptions
         });
-      
+
     }
 
     onAddOption(option) {
         let newOptions = this.state.options;
-        if(newOptions.indexOf(option)>-1)
-        {
+        if (newOptions.indexOf(option) > -1) {
             this.setState({
                 errorMsg: `${option} is alreday in list`,
                 options: newOptions
             });
 
         }
-        else{
-        newOptions.push(option);
-        this.setState({
-            options: newOptions,
-            errorMsg: undefined
-        });
-    }
+        else {
+            newOptions.push(option);
+            this.setState({
+                options: newOptions,
+                errorMsg: undefined
+            });
+        }
     }
     onEditOption(option, newOption) {
 

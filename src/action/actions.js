@@ -5,6 +5,7 @@ const actions = Reflux.createActions([
 'EditOption',
 'DeleteOption',
 'ErrorCheck',
-'isValid']);
+'isValid',
+'DeleteAll']);
 
 export default actions;
