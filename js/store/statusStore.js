@@ -1,5 +1,5 @@
 import Reflux from 'reflux';
-import actions from '../action1/actions'
+import actions from '../action/actions'
 
 export default class StatusStore extends Reflux.Store {
     constructor() {

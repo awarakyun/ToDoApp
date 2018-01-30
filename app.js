@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import StatusStore from './js/store1/statusStore';
-import ToDoApp from './js/component1/to-do-app.js';
+import StatusStore from './js/store/statusStore';
+import ToDoApp from './js/component/toDoApp.js';
 
 
 export default class App extends Component {
