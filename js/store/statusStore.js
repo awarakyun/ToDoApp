@@ -6,7 +6,7 @@ export default class StatusStore extends Reflux.Store {
     constructor() {
         super();
         this.state = {
-            options: ['ankit','shanu'],
+            options: [],
             selected: undefined,
             editSelection: undefined,
             errorMsg: undefined
