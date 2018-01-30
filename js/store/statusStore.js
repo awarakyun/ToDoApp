@@ -40,7 +40,7 @@ export default class StatusStore extends Reflux.Store {
         if(newOptions.indexOf(option)>-1)
         {
             this.setState({
-                errorMsg: option + ' is alreday in list',
+                errorMsg: `${option} is alreday in list`,
                 options: newOptions
             });
 
